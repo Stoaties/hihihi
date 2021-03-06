@@ -8,6 +8,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import src.ecole.Ecole;
 
 public class BaseDonnees implements Serializable {
 	private static List<Etudiant> etudiants = new ArrayList<Etudiant>();

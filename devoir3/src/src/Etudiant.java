@@ -23,7 +23,7 @@ public class Etudiant implements Serializable{
 	public Etudiant(String nom, String prenom) {
 		this.nom = nom;
 		this.prenom = prenom;
-		ecole = new Ecole();
+		ecole = null;
 		amis = new  ArrayList<Etudiant>();
 		convos = new  ArrayList<Conversation>();
 		cours = new  ArrayList<Cours>();
