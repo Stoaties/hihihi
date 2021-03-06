@@ -36,6 +36,10 @@ public class Conversation implements Serializable {
         return present;
     }
 
+    public Message getMessage(int index) {
+        return checkIndex(index) ? messages.get(index) : null;
+    }
+
     public void addMessage(Etudiant e, String message) {
         if(participants.contains(e))
             messages.add(new Message(e, message, new Timestamp(System.currentTimeMillis())));
@@ -48,10 +52,7 @@ public class Conversation implements Serializable {
         return checkIndex(index);
     }
 
-    public Message getMessage(int index) {
-        return checkIndex(index) ? messages.get(index) : null;
-    }
-
+    //Enleve tout les messages composes par un etudiant dans la conversation
     public boolean purgeStudent(Etudiant e) {
         for(Message m : messages) {
             if(m.getEnvoyeur() == e)
@@ -61,17 +62,17 @@ public class Conversation implements Serializable {
         return removeEtudiant(e);
     }
 
-
+    //Valide si un index est situe dans l'intervalle des messages
     public boolean checkIndex(int index) {
         return index >= 0 && index <= messages.size();
     }
 
     public String toString() {
-        String total = "";
+        StringBuilder total = new StringBuilder();
         for(Message m : messages) {
-            total += m.toString() + "\n";
+            total.append(m.toString()).append("\n");
         }
 
-        return total;
+        return total.toString();
     }
 }

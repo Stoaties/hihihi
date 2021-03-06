@@ -22,13 +22,15 @@ public class Message implements Serializable {
         return envoyeur;
     }
 
+    //Laisse un message bidon
     public void supprimerContenu() {
         message = MESSAGE_SUPPRIME;
     }
 
+    //Elimine l'utilisateur, tout en laissant un message bidon
     public void purge() {
         envoyeur = Etudiant.ETUDIANT_DELETED;
-        message = MESSAGE_SUPPRIME;
+        supprimerContenu();
     }
 
     public String toString() {
