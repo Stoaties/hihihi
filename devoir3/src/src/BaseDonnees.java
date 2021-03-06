@@ -6,11 +6,10 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
+import src.ecole.Cours;
 import src.ecole.Ecole;
 
 public class BaseDonnees implements Serializable {
@@ -27,20 +26,21 @@ public class BaseDonnees implements Serializable {
 			Etudiant etu = new Etudiant("Adrien", "Marcotte", "ouioui"); 
 			Etudiant etu2 = new Etudiant("Corentin", "Gouanvic", "nonnon") ;
 			Ecole ecole = new Ecole("UdeM");
-			Util.addEtudiantEcole(etu, ecole);
-			Util.addEtudiantEcole(etu2, ecole);
+			Util.changeEtudiantEcole(etu, ecole);
+			Util.changeEtudiantEcole(etu2, ecole);
 			bd.etudiants.add(etu);
 			bd.etudiants.add(etu2);
+			Cours cou = new Cours("Interface" , "IFT2905");
+			ecole.addCours(cou);
+			Util.addEtudiantCours(etu, cou);
 			
 		}
+		System.out.println(bd.etudiants.toString());	
 		
-		System.out.println(bd.etudiants.toString());
-		
-		//System.out.println(bd.etudiants.get(0).getNom() + " " + bd.etudiants.get(0).getPrenom() + bd.etudiants.get(0).getEcole().get);
-		//System.out.println(bd.etudiants.get(1).getNom() + " " + bd.etudiants.get(1).getPrenom());
-		
-		
-		
+		for(Etudiant e: bd.etudiants) {
+			
+			System.out.println(e.getNom() + " " + e.getCours());
+		}
 		save();
 	}
 

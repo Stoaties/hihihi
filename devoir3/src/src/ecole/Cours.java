@@ -26,4 +26,9 @@ public class Cours implements Serializable{
 	public HashSet<Etudiant> getEtudiants() {
 		return etudiants;
 	}
+	
+	public String toString() {
+		return sigle + " " + nom;
+		
+	}
 }

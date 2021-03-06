@@ -35,4 +35,8 @@ public class Ecole implements Serializable{
 	public String toString() {
 		return nom + " nb etudiants : " + etudiants.size();
 	}
+	
+	public void addCours(Cours cours) {
+		this.cours.add(cours);
+	}
 }
