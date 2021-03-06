@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import src.convos.Conversation;
+import src.ecole.Cours;
+import src.ecole.Ecole;
 
 public class Etudiant implements Serializable{
 	private String nom;

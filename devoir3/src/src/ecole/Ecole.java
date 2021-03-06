@@ -1,8 +1,10 @@
-package src;
+package src.ecole;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+import src.Etudiant;
 
 public class Ecole implements Serializable{
 	private String nom;
@@ -18,14 +20,15 @@ public class Ecole implements Serializable{
 		cours = new ArrayList<Cours>();
 	}
 	
-	public Ecole() {
-		nom = "";
-		etudiants = new ArrayList<Etudiant>();
-		programmes = new ArrayList<Programme>();
-		cours = new ArrayList<Cours>();
+	public List<Etudiant> getEtudiants() {
+		return etudiants;
 	}
-	
-	public void removeEtudiant(Etudiant etudiant) {
-		etudiants.remove(etudiants);
+
+	public List<Programme> getProgrammes() {
+		return programmes;
+	}
+
+	public List<Cours> getCours() {
+		return cours;
 	}
 }
