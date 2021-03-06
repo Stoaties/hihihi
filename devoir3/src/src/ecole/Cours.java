@@ -1,20 +1,18 @@
 package src.ecole;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-
+import java.util.HashSet;
 import src.Etudiant;
 
 public class Cours implements Serializable{
 	private final String nom;
 	private final String sigle;
-	private List<Etudiant> etudiants;
+	private HashSet<Etudiant> etudiants;
 	
 	public Cours(String nom, String sigle) {
 		this.nom = nom;
 		this.sigle = sigle;
-		etudiants = new ArrayList<Etudiant>();
+		etudiants = new HashSet<Etudiant>();
 	}
 
 	public String getNom() {
@@ -25,7 +23,7 @@ public class Cours implements Serializable{
 		return sigle;
 	}
 
-	public List<Etudiant> getEtudiants() {
+	public HashSet<Etudiant> getEtudiants() {
 		return etudiants;
 	}
 }

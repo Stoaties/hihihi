@@ -7,20 +7,39 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 import src.ecole.Ecole;
 
 public class BaseDonnees implements Serializable {
-	private static List<Etudiant> etudiants = new ArrayList<Etudiant>();
-	private static List<Ecole> ecoles = new ArrayList<Ecole>();
+	private Set<Etudiant> etudiants = new HashSet<Etudiant>();
+	private Set<Ecole> ecoles = new HashSet<Ecole>();
+	private static BaseDonnees bd = null;
 	
 	public static void main(String[] args) {
-		init();
-		System.out.println(etudiants.get(0).getNom()+" "+etudiants.get(0).getPrenom());
 		
-		//Ecole ecole = new Ecole("UdeM");
-		//etudiants.get(0).setEcole(ecole);
-		//etudiants.add(new Etudiant("Corentin", "Gouanvic"));
+		init();
+		
+		if(bd==null) {
+			bd = new BaseDonnees();
+			Etudiant etu = new Etudiant("Adrien", "Marcotte", "ouioui"); 
+			Etudiant etu2 = new Etudiant("Corentin", "Gouanvic", "nonnon") ;
+			Ecole ecole = new Ecole("UdeM");
+			Util.addEtudiantEcole(etu, ecole);
+			Util.addEtudiantEcole(etu2, ecole);
+			bd.etudiants.add(etu);
+			bd.etudiants.add(etu2);
+			
+		}
+		
+		System.out.println(bd.etudiants.toString());
+		
+		//System.out.println(bd.etudiants.get(0).getNom() + " " + bd.etudiants.get(0).getPrenom() + bd.etudiants.get(0).getEcole().get);
+		//System.out.println(bd.etudiants.get(1).getNom() + " " + bd.etudiants.get(1).getPrenom());
+		
+		
 		
 		save();
 	}
@@ -29,14 +48,13 @@ public class BaseDonnees implements Serializable {
 		try {
 			FileInputStream fileIn = new FileInputStream("save");
 			ObjectInputStream in = new ObjectInputStream(fileIn);
-			etudiants = (List<Etudiant>) in.readObject();
+			bd =  (BaseDonnees) in.readObject();
 			in.close();
 			fileIn.close();
 		} catch (IOException i) {
-			i.printStackTrace();
+			System.out.println("File not found");
 			return;
 		} catch (ClassNotFoundException c) {
-			System.out.println("Employee class not found");
 			c.printStackTrace();
 			return;
 		}
@@ -49,7 +67,7 @@ public class BaseDonnees implements Serializable {
 		try {
 			fout = new FileOutputStream("save");
 			oos = new ObjectOutputStream(fout);
-			oos.writeObject(etudiants);
+			oos.writeObject(bd);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {

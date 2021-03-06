@@ -1,34 +1,38 @@
 package src.ecole;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import src.Etudiant;
 
 public class Ecole implements Serializable{
 	private String nom;
 	
-	private List<Etudiant> etudiants;
-	private List<Programme> programmes;
-	private List<Cours> cours;
+	private HashSet<Etudiant> etudiants;
+	private HashSet<Programme> programmes;
+	private HashSet<Cours> cours;
 
 	public Ecole(String nom) {
 		this.nom = nom;
-		etudiants = new ArrayList<Etudiant>();
-		programmes = new ArrayList<Programme>();
-		cours = new ArrayList<Cours>();
+		etudiants = new HashSet<Etudiant>();
+		programmes = new HashSet<Programme>();
+		cours = new HashSet<Cours>();
 	}
 	
-	public List<Etudiant> getEtudiants() {
+	public HashSet<Etudiant> getEtudiants() {
 		return etudiants;
 	}
 
-	public List<Programme> getProgrammes() {
+	public HashSet<Programme> getProgrammes() {
 		return programmes;
 	}
 
-	public List<Cours> getCours() {
+	public HashSet<Cours> getCours() {
 		return cours;
+	}
+	
+	public String toString() {
+		return nom + " nb etudiants : " + etudiants.size();
 	}
 }

@@ -2,53 +2,69 @@ package src;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import src.convos.Conversation;
 import src.ecole.Cours;
 import src.ecole.Ecole;
+import src.ecole.Programme;
 
 public class Etudiant implements Serializable{
 	private String nom;
 	private String prenom;
 	private Ecole ecole;
-	private List<Etudiant> amis;
-	private List<Conversation> convos;
-	private List<Cours> cours;
+	private Programme programme;
+
+
+	private Set<Etudiant> amis = new HashSet<>();
+	private Set<Conversation> convos =new HashSet<>();
+	private Set<Cours> cours=new HashSet<>();
 	//private List<Groupe> groupes;
-	private List<String> interets;
+	private Set<String> interets=new HashSet<>();
 	private String email;
-	public static final Etudiant ETUDIANT_DELETED= new Etudiant("deleted"," user ");
+	public static final Etudiant ETUDIANT_DELETED= new Etudiant("deleted"," user ", "deleted@user");
 	
-	public Etudiant(String nom, String prenom) {
+	public Etudiant(String nom, String prenom, String email) {
 		this.nom = nom;
 		this.prenom = prenom;
+		this.email = email;
 		ecole = null;
-		amis = new  ArrayList<Etudiant>();
-		convos = new  ArrayList<Conversation>();
-		cours = new  ArrayList<Cours>();
-		interets = new  ArrayList<String>();
-		email = "";
 	}
 	
-	public Etudiant() {
-	}
 
+	////////////////////////////////////////////////////////////////
+	
 	public String getNom() {
 		return nom;
 	}
+
 
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
 
+
 	public String getPrenom() {
 		return prenom;
 	}
 
+
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 
 	public Ecole getEcole() {
 		return ecole;
@@ -57,59 +73,50 @@ public class Etudiant implements Serializable{
 	public void setEcole(Ecole ecole) {
 		this.ecole = ecole;
 	}
+	
+	public Programme getProgramme() {
+		return programme;
+	}
 
-	public List<Etudiant> getAmis() {
+
+	public void setProgramme(Programme programme) {
+		this.programme = programme;
+	}
+
+	
+	public Set<Etudiant> getAmis() {
 		return amis;
 	}
 
-	public void setAmis(List<Etudiant> amis) {
-		this.amis = amis;
-	}
 
-	public List<Conversation> getConvos() {
+	public Set<Conversation> getConvos() {
 		return convos;
 	}
 
-	public void setConvos(List<Conversation> convos) {
-		this.convos = convos;
-	}
 
-	public List<Cours> getCours() {
+	public Set<Cours> getCours() {
 		return cours;
 	}
 
-	public void setCours(List<Cours> cours) {
-		this.cours = cours;
-	}
 
-	public List<String> getInterets() {
+	public Set<String> getInterets() {
 		return interets;
 	}
 
-	public void setInterets(List<String> interets) {
-		this.interets = interets;
-	}
 
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	////////////////////////////////////////////////////////////////
-	
-	public void addAmi(Etudiant etudiant) {
-		if(!amis.contains(etudiant)) {
-			amis.add(etudiant);
-		}
+	public static Etudiant getEtudiantDeleted() {
+		return ETUDIANT_DELETED;
 	}
 	
-	public void removeAmi(Etudiant etudiant) {
-		amis.remove(etudiant);
-		
+	public String toStringFull() {
+		return prenom + " " + nom +  " | Ecole: " + ecole.toString();
 	}
 	
+	public String toString() {
+		return prenom + " " + nom;
+	}
+	
+	////////////////////////////////////
 
 	
 
