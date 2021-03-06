@@ -37,7 +37,6 @@ public class Cours implements Serializable{
 	public void setEtudiants(List<Etudiant> etudiants) {
 		this.etudiants = etudiants;
 	}
-	/////////////////////////////////////////////////////////////
 	
 	public void addEtudiant(Etudiant etudiant) {
 		if(!etudiants.contains(etudiant)) {

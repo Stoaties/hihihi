@@ -1,8 +1,10 @@
-package src;
+package src.convos;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+
+import src.Etudiant;
 
 public class Conversation implements Serializable {
     private ArrayList<Message> messages;
@@ -35,15 +37,32 @@ public class Conversation implements Serializable {
     }
 
     public void addMessage(Etudiant e, String message) {
-      //  messages.add(new Message(e, message, new Timestamp(System.currentTimeMillis()));
+        if(participants.contains(e))
+            messages.add(new Message(e, message, new Timestamp(System.currentTimeMillis())));
+    }
+
+    public boolean removeMessage(int index) {
+        if(checkIndex(index))
+            messages.get(index).supprimerContenu();
+
+        return checkIndex(index);
     }
 
     public Message getMessage(int index) {
-        return messages.get(index);
+        return checkIndex(index) ? messages.get(index) : null;
     }
 
-    public boolean deleteMessagesFrom() {
-    	return true;
+    public boolean purgeStudent(Etudiant e) {
+        for(Message m : messages) {
+            if(m.getEnvoyeur() == e)
+                m.purge();
+        }
+
+        return removeEtudiant(e);
     }
-    
+
+
+    public boolean checkIndex(int index) {
+        return index >= 0 && index <= messages.size();
+    }
 }

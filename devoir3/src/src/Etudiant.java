@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import src.convos.Conversation;
+
 public class Etudiant implements Serializable{
 	private String nom;
 	private String prenom;
@@ -14,7 +16,7 @@ public class Etudiant implements Serializable{
 	//private List<Groupe> groupes;
 	private List<String> interets;
 	private String email;
-	private static final Etudiant ETUDIANT_DELETED= new Etudiant("deleted"," user ");
+	public static final Etudiant ETUDIANT_DELETED= new Etudiant("deleted"," user ");
 	
 	public Etudiant(String nom, String prenom) {
 		this.nom = nom;
