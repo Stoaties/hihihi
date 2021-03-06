@@ -30,5 +30,9 @@ public class Message implements Serializable {
         envoyeur = Etudiant.ETUDIANT_DELETED;
         message = MESSAGE_SUPPRIME;
     }
+
+    public String toString() {
+        return dateEnvoie + " | " + envoyeur + "\n" + message;
+    }
 }
 

@@ -15,6 +15,8 @@ public class BaseDonnees implements Serializable {
 	private static List<Ecole> ecoles = new ArrayList<Ecole>();
 	
 	public static void main(String[] args) {
+		BaseDonn
+
 		init();
 		System.out.println(etudiants.get(0).getNom()+" "+etudiants.get(0).getPrenom());
 		

@@ -65,4 +65,13 @@ public class Conversation implements Serializable {
     public boolean checkIndex(int index) {
         return index >= 0 && index <= messages.size();
     }
+
+    public String toString() {
+        String total = "";
+        for(Message m : messages) {
+            total += m.toString() + "\n";
+        }
+
+        return total;
+    }
 }
