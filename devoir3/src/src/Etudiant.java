@@ -103,8 +103,10 @@ public class Etudiant implements Serializable{
 	
 	public void removeAmi(Etudiant etudiant) {
 		amis.remove(etudiant);
+		
 	}
 	
 
+	
 
 }
