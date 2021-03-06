@@ -1,5 +1,7 @@
 package src;
 
-public class Cours {
+import java.io.Serializable;
+
+public class Cours implements Serializable{
 
 }

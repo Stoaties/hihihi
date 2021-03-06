@@ -1,5 +1,7 @@
 package src;
 
-public class Programme {
+import java.io.Serializable;
+
+public class Programme implements Serializable{
 
 }

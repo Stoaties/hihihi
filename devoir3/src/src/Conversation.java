@@ -1,5 +1,7 @@
 package src;
 
-public class Conversation {
+import java.io.Serializable;
+
+public class Conversation implements Serializable{
 
 }

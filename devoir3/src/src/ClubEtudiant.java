@@ -1,5 +1,7 @@
 package src;
 
-public class ClubEtudiant {
+import java.io.Serializable;
+
+public class ClubEtudiant implements Serializable{
 
 }
