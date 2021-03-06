@@ -13,5 +13,4 @@ public class util {
 		etudiant2.getAmis().remove(etudiant1);
 	}
 	
-	
 }
